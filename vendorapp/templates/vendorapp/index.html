@@ -1,131 +1,333 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+body{
+  background: #fec107;
+  padding: 0 10px;
+}
+.wrapper{
+  max-width: 500px;
+  width: 100%;
+  background: #fff;
+  margin: 50px auto;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.125);
+  padding: 30px;
+}
 
-    <title>Hello, world!</title>
+.wrapper .title{
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #fec107;
+  text-transform: uppercase;
+  text-align: center;
+}
 
-    <style>
-        *{
-            padding:0;
-            margin: 0;
-        }
-        body{
-            background-color:azure;
-        }
-     .Container{
-        width: 500px;
-        height: 100%;
-        margin-left:550px;
-        border:2px solid blue;
-        background-color: #6495ed;
-        border-top-left-radius:10px ;
-        border-bottom-right-radius:10px ;
-     }
-     input
-     {
-       width: 400px;
-       height: 30px;
-       padding: 10px;
-       border-radius: 5px; 
-       margin-top: 10px;
-       border:2px solid blue;
-     }
-     #kyc{
-        width: 400px;
-       height: 30px;
-       /* padding: 10px; */
-       border-radius: 5px; 
-       margin-top: 10px;
-       color: black;
-       border:2px solid blue;
-     }
-     .child_container{
-         text-align: center;
-     }
+.wrapper .form{
+  width: 100%;
+}
 
-    </style>
-  </head>
-  <body>
-    <h2 style="text-align: center;">Restration Vendor Form</h2>
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="Container">
-            <div class="child_container">
-                <input type="text" name="name" placeholder="Enter Name">
-            </div>
-            <div class="child_container">
-                <input type="text" name="mobilenumber" placeholder="Enter Mobile Number">
-            </div>
-            <div class="child_container">
-                <input type="text" name="email" placeholder="Enter Email">
-            </div>
-            <div class="child_container">
-                <input type="text" name="location" placeholder="Enter Location">
-            </div>
-            <div class="child_container">
-                <input type="text" name="service" placeholder="Enter Service">
-            </div>
-            <div class="child_container">
-                <input type="text" name="address" placeholder="Enter Address">
-            </div>
-            <div class="child_container">
-                <input type="text" name="land_link" placeholder="Enter Land link">
-            </div>
-            <div class="child_container">
-                <select name="kyc" id="kyc">
-                <option value="" selected disabled hidden id="kyc">Choose here</option>
-                <option value="Pan">Pan</option>
-                <option value="Aadhar">Aadhar</option>
-                <option value="Gst">Gst</option>
-                    
-                  </select>
-            </div >
-            <div class="child_container">
-                <input type="text" name="accountNumber" placeholder="Enter Account Number">
-            </div>
-            <div class="child_container">
-                <input type="text" name="bankName" placeholder="Enter BankName">
-            </div>
-            <div class="child_container" >
-                <input type="text" name="ifsc_code" placeholder="Enter Ifsc code">
-            </div>
-            <div class="child_container">
-                <input type="text" name="accountName" placeholder=" Enter Account holder name">
-            </div>
-            <!-- <div class="child_container">
-                <input type="datetime" name="timing" placeholder="Select Timing">
-            </div> -->
-            <div class="child_container">
-                <input type="text" name="about" placeholder="Enter About">
-            </div>
-            <div class="child_container">
-                <input type="file" name="logo" placeholder="select logo image" style="width: 300px; height:40px;padding: 10px ;">
-            </div>
+.wrapper .form .inputfield{
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
 
-            <div class="child_container">
-                <input type="submit" value="Register" style="height: 45px; margin-bottom: 10px;font-size: 18px; background-color: rgb(55, 182, 76); padding: 5px; ">
-            </div>
+.wrapper .form .inputfield label{
+   width: 200px;
+   color: #757575;
+   margin-right: 10px;
+  font-size: 14px;
+}
+
+.wrapper .form .inputfield .input,
+.wrapper .form .inputfield .textarea{
+  width: 100%;
+  outline: none;
+  border: 1px solid #d5dbd9;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.wrapper .form .inputfield .textarea{
+  width: 100%;
+  height: 125px;
+  resize: none;
+}
+
+.wrapper .form .inputfield .custom_select{
+  position: relative;
+  width: 100%;
+  height: 37px;
+}
+
+.wrapper .form .inputfield .custom_select:before{
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  border: 8px solid;
+  border-color: #d5dbd9 transparent transparent transparent;
+  pointer-events: none;
+}
+
+.wrapper .form .inputfield .custom_select select{
+  -webkit-appearance: none;
+  -moz-appearance:   none;
+  appearance:        none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  padding: 8px 10px;
+  font-size: 15px;
+  border: 1px solid #d5dbd9;
+  border-radius: 3px;
+}
+
+
+.wrapper .form .inputfield .input:focus,
+.wrapper .form .inputfield .textarea:focus,
+.wrapper .form .inputfield .custom_select select:focus{
+  border: 1px solid #fec107;
+}
+
+.wrapper .form .inputfield p{
+   font-size: 14px;
+   color: #757575;
+}
+.wrapper .form .inputfield .check{
+  width: 15px;
+  height: 15px;
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.wrapper .form .inputfield .check input[type="checkbox"]{
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.wrapper .form .inputfield .check .checkmark{
+  width: 15px;
+  height: 15px;
+  border: 1px solid #fec107;
+  display: block;
+  position: relative;
+}
+.wrapper .form .inputfield .check .checkmark:before{
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  width: 5px;
+  height: 2px;
+  border: 2px solid;
+  border-color: transparent transparent #fff #fff;
+  transform: rotate(-45deg);
+  display: none;
+}
+.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark{
+  background: #fec107;
+}
+
+.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark:before{
+  display: block;
+}
+
+.wrapper .form .inputfield .btn{
+  width: 100%;
+   padding: 8px 10px;
+  font-size: 15px; 
+  border: 0px;
+  background:  #fec107;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+
+.wrapper .form .inputfield .btn:hover{
+  background: #ffd658;
+}
+
+.wrapper .form .inputfield:last-child{
+  margin-bottom: 0;
+}
+
+@media (max-width:420px) {
+  .wrapper .form .inputfield{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .wrapper .form .inputfield label{
+    margin-bottom: 5px;
+  }
+  .wrapper .form .inputfield.terms{
+    flex-direction: row;
+  }
+}
+        </style>
+    </head>
+
+    <body>
+  <form action="" method="post">
+    {% csrf_token %}
+ <div class="wrapper">
+    <div class="title">
+        OneKnock Patner Registration Form
+    </div>
+    <div class="form">
+       <div class="inputfield">
+          <label>First Name</label>
+          <input type="text" name="name" class="input" required>
+       </div>  
+        <div class="inputfield">
+          <label>Mobilenumber</label>
+          <input type="text" name="mobilenumber" class="input" required>
+       </div>  
+
+
+       <div class="inputfield">
+        <label>Email</label>
+        <input type="text" name="email" class="input" required>
+     </div>  
+
+     <div class="inputfield">
+        <label>location</label>
+        <input type="text" name="location" class="input" required>
+     </div>  
+     
+     <div class="inputfield">
+        <label>service</label>
+        <input type="text" name="service" class="input" required>
+     </div>  
+
+     <!-- <div class="inputfield">
+        <label>Address</label>
+        <input type="text" name="address" class="input">
+     </div>   -->
+     
+
+     <div class="inputfield">
+        <label>land_line</label>
+        <input type="text" name="land_line" class="input" required>
+     </div>  
+
+     <!-- <div class="inputfield">
+        <label>KYC DOC</label>
+        <div class="custom_select">
+          <select name="kyc"> 
+            <option value="">Choose here</option>
+            <option value="pan">Pan</option>
+            <option value="Aadhar">Aadhar</option>
+            <option value="GST">GST</option>
+          </select>
         </div>
+     </div>  -->
+     <div class="child_container">
+        <lebel>Select logo</lebel><input type="file" name="logo" placeholder="select logo image" style="width: 300px; height:40px;padding: 10px ;" required>
+    </div>
 
 
+     <div class="child_container">
+        <lebel>Upload AAdhar</lebel><input type="file" name="aadhar" placeholder="select logo image" style="width: 300px; height:40px;padding: 10px ;" required>
+    </div>
 
-    </form>
+    <div class="child_container">
+        <lebel>Upload PAN</lebel><input type="file" name="pan" placeholder="select logo image" style="width: 300px; height:40px;padding: 10px ;" required>
+    </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    <div class="child_container">
+        <lebel>Upload GST</lebel><input type="file" name="gst" placeholder="select logo image" style="width: 300px; height:40px;padding: 10px ;" required>
+    </div>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
-  </body>
+     <div class="inputfield">
+        <label>AccountNumber</label>
+        <input type="text" name="accountNumber" class="input" required>
+     </div>  
+     
+
+     <div class="inputfield">
+        <label>BankName</label>
+        <input type="text" name="bankName" class="input" required>
+     </div>  
+     
+
+     <div class="inputfield">
+        <label>ifsc_code</label>
+        <input type="text" name="ifsc_code" class="input" required>
+     </div> 
+     
+     <div class="inputfield">
+        <label>AccountName</label>
+        <input type="text" name="accountName" class="input" required>
+     </div>  
+
+     <div class="inputfield">
+        <label> Other Services</label>
+        <input type="text" name="otherservice" class="input" required>
+     </div>  
+
+<!-- 
+       <div class="inputfield">
+          <label>Password</label>
+          <input type="password" class="input">
+       </div>  
+      <div class="inputfield">
+          <label>Confirm Password</label>
+          <input type="password" class="input">
+       </div> 
+       
+        <div class="inputfield">
+          <label>Email Address</label>
+          <input type="text" class="input">
+       </div> 
+      <div class="inputfield">
+          <label>Phone Number</label>
+          <input type="text" class="input">
+       </div>  -->
+       <div class="inputfield">
+        <label>About</label>
+        <input type="text" class="input" name=about required>
+     </div>
+      <div class="inputfield">
+          <label>Address</label>
+          <textarea class="textarea" name="address" required></textarea>
+       </div> 
+      <!-- <div class="inputfield">
+          <label>Postal Code</label>
+          <input type="text" class="input">
+       </div> 
+      <div class="inputfield terms">
+          <label class="check">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          <p>Agreed to terms and conditions</p>
+       </div>  -->
+
+       <!-- <div class="child_container">
+        <label for="">Select Company Logo</label><input type="file" name="logo" placeholder="select logo image" style="width: 300px; height:40px;padding: 10px ;">
+    </div> -->
+      <div class="inputfield">
+        <input type="submit" value="Register" class="btn">
+      </div>
+    </div>
+</div>
+</form>
+</body>
 </html>
