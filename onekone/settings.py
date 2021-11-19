@@ -90,20 +90,24 @@ WSGI_APPLICATION = 'onekone.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 'default': {
     'ENGINE': 'django.contrib.gis.db.backends.postgis',
-
-    'NAME': 'postgre1',
-    'USER': 'postgres',
-    'PASSWORD': 'Shiv@406',
-    'HOST': 'localhost',
+    'NAME': 'dg2sc1rdkiphm',
+    'USER': 'wcbsvmykgaxeqi',
+    'PASSWORD': '3427b8efba0f4e4e06893090f67e42fcb7c2a0727d1037356e1a06d179274744',
+    'HOST': 'ec2-52-44-31-100.compute-1.amazonaws.com',
     'PORT':"5432"
  }
 }
+
+
+# import dj_database_url
+# db_from_env=dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 
 
 # Password validation
