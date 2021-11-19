@@ -179,10 +179,22 @@ body{
     flex-direction: row;
   }
 }
+#Lut{
+  margin-left: 1300px;
+  width: 100px;
+  height: 40px;
+  
+}
         </style>
     </head>
 
     <body>
+      <form action="http://127.0.0.1:8000/logout/" method="post">
+        {% csrf_token %}
+      <div class="inputfield">
+        <input type="submit" id="Lut" value="Logout" class="btn">
+      </div>
+    </form>
   <form action="" method="post">
     {% csrf_token %}
  <div class="wrapper">
