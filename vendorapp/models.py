@@ -38,14 +38,14 @@ class Hotel(models.Model):
     address = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    location = LocationField(based_fields=['address'], zoom=7) # Spatial Field Types
+    location = LocationField(based_fields=['address'], zoom=7) 
 
     def __str__(self) -> str:
         return self.name
     def distance(self):
         
         #print(self.location)
-        pnt=Point(77.651255,12.873291)
+        pnt=Point(77.651581,12.873008)
         #pnt=Point(12.873291,77.651255)
         pnt1=Point(self.location.y,self.location.x)
         
@@ -55,6 +55,8 @@ class Hotel(models.Model):
 class Place(models.Model):
     city = models.CharField(max_length=255)
     location = PlainLocationField(based_fields=['city'], zoom=7)
+
+
 
 
 

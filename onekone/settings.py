@@ -33,9 +33,9 @@ if os.name == 'nt':
 SECRET_KEY = 'django-insecure-2ng-*8q4&)klpptpo)wg@0b@4)axi*)uq7u^-#)td0%jx1khi7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -48,9 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vendorapp',
+    'account',
     'rest_framework',
     "django.contrib.gis",
     'location_field.apps.DefaultConfig'
+    
     
 ]
 
@@ -96,12 +98,12 @@ DATABASES = {
 #     }
 'default': {
     'ENGINE': 'django.contrib.gis.db.backends.postgis',
-    'NAME': 'dg2sc1rdkiphm',
-    'USER': 'wcbsvmykgaxeqi',
-    'PASSWORD': '3427b8efba0f4e4e06893090f67e42fcb7c2a0727d1037356e1a06d179274744',
-    'HOST': 'ec2-52-44-31-100.compute-1.amazonaws.com',
+    'NAME': 'postgres',
+    'USER': 'postgres',
+    'PASSWORD': 'Shiv@406',
+    'HOST': 'localhost',
     'PORT':"5432"
- }
+    }
 }
 
 
@@ -158,8 +160,10 @@ else:
     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 
-
+AUTH_USER_MODEL='account.CustomerRegistration'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+

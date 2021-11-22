@@ -3,11 +3,11 @@ from django.contrib.gis import admin
 from django.contrib.gis.geos import GEOSGeometry
 from django.contrib.auth.admin import UserAdmin
 from .models import *
-# Register your models here.
-# @admin.register(Vendor)
-# class VendorAdmin(admin.ModelAdmin):
-#     list_display=['name','mobilenumber','email','location','service','address','aadharImage','panImage','gstImage','land_line','accountNumber'
-#     ,'ifsc_code','accountName','bankName','timing','about','logo']
+#Register your models here.
+@admin.register(Vendor)
+class VendorAdmin(admin.ModelAdmin):
+    list_display=['name','mobilenumber','email','location','service','address','aadharImage','panImage','gstImage','land_line','accountNumber'
+    ,'ifsc_code','accountName','bankName','timing','about','logo']
 class HotelAdmin(admin.OSMGeoAdmin):
     model = Hotel
     list_display = ['name','address','location']
